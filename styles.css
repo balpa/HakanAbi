@@ -1,0 +1,44 @@
+/* THE UGLIER, THE BETTER diyelim :) */
+
+:root {
+  --black: #000000;
+  --pink: #FB2576;
+  --purple: #3F0071;
+  --blue: #150050;
+}
+
+body {
+  background-color: var(--black)
+}
+
+h2 {
+  color: var(--pink);
+}
+
+span {
+  color: yellowgreen;
+}
+
+#display {
+  color: var(--pink)
+}
+
+#clear-button {
+  width: 100px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-style: none;
+  border-radius: 10px;
+  color: var(--pink);
+}
+
+#input {
+  border-style: none;
+  height: 25px;
+  transition: 0.5s;
+}
+
+#input:focus {
+  border-radius: 15px;
+  outline: none;
+}

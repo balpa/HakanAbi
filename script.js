@@ -1,15 +1,37 @@
+
+// üzerinde işlem yapacağımız elementleri seçtiğimiz yer. kütüphane için import gibi düşünebilirsin.
 let userInput = document.getElementById("input")
-let displayH1 = document.getElementById('display')
-let button = document.getElementById('button')
+let inputSpan = document.getElementById('input-span')
+let clearButton = document.getElementById('clear-button')
+let inputTypeSpan = document.getElementById('input-type-span')
 
+//*************
+// INPUT BÖLÜMÜ
 
-userInput.oninput = () => {
-  displayH1.innerHTML = userInput.value
+// input'ta her değişiklik olduğunda çalışır. (inputSpan'in değerini girdiğimiz değer yapıyor)
+userInput.oninput = () => { 
+
+  inputSpan.innerHTML = userInput.value 
+
+  // isNaN = Not a Number. isNaN doğru gelirse string, gelmezse integer dedik. Exception'lar vardır **çok sağlıklı değil burası** 
+  // float için else if yazıp input içinde "." var mı diye baktık.
+  if (isNaN(userInput.value)){
+    inputTypeSpan.innerHTML = 'string'
+  } else if (userInput.value.includes('.')){
+    inputTypeSpan.innerHTML = 'float'
+  } else {
+    inputTypeSpan.innerHTML = 'integer'
+  }
 }
 
+// input'u ve yazdırdığımız yeri temizleme fonksiyonu
 function clearInput() {
-  displayH1.innerHTML = ''
+  inputSpan.innerHTML = ''
   userInput.value = ''
+  inputTypeSpan.innerHTML = ''
 }
 
-button.addEventListener('click', clearInput)
+// butona basıldığında ne yapılacağı. yazdığımız clearInput fonksiyonunu çağırıyoruz
+clearButton.addEventListener('click', clearInput)
+
+//************
