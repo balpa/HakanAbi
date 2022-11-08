@@ -61,35 +61,39 @@ let personalData = {
   gender: ""
 }
 
-let errorMessage = ""
+let errorMessage = []
 
 //bug var bakacağım
 
 nameInput.oninput = () =>{
+
   if(nameInput.value != "" && nameInput.value.length < 35){
     personalData.name = nameInput.value
   }
-  if (nameInput.value.length < 2 && nameInput.value.length > 35) errorMessage += "  name, "
+  if (nameInput.value.length < 2 && nameInput.value.length > 35) errorMessage.push("name")
 }
 surnameInput.oninput = () =>{
+
   if(surnameInput.value != "" && surnameInput.value.length < 35){
     personalData.surname = surnameInput.value
   }
-  if (surnameInput.value.length < 2 && surnameInput.value.length > 35) errorMessage += "  surname, "
+  if (surnameInput.value.length < 2 && surnameInput.value.length > 35) errorMessage.push("surname")
 }
 ageInput.oninput = () =>{
+
   if(ageInput.value > 0 && ageInput.value < 125){
     personalData.age = ageInput.value
   } else {
-    errorMessage += " age, "
+    errorMessage.push("age")
     personalData.age = 0
   }
 }
 genderInput.oninput = () =>{
+
   let gender = genderInput.value.toLowerCase()
 
-  if(gender != "m" || gender != 'w'){
-    errorMessage += 'gender, '
+  if(gender != "m" && gender != 'w'){
+    errorMessage.push("gender")
   } else {
     personalData.gender = gender
   }
@@ -101,7 +105,10 @@ function submitNameSurnameAgeGender(){
   surnameDisplaySpan.innerHTML = personalData.surname
   ageDisplaySpan.innerHTML = personalData.age
   genderDisplaySpan.innerHTML = personalData.gender
-  errorDisplaySpan.innerHTML = errorMessage
+
+  // kurduğumuz mantıkta her harf için hata mesajı ekliyor. Dolayısıyla set diyerek duplicate olanları temizleidk
+  let uniqueErrorArray = [...new Set(errorMessage)]
+  errorDisplaySpan.innerHTML = uniqueErrorArray
 }
 
 submitNameSurnameAgeGenderButton.addEventListener('click', submitNameSurnameAgeGender)
