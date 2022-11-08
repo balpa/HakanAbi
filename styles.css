@@ -78,3 +78,29 @@ span {
   color: var(--pink);
   margin-top: 4px;
 }
+
+#thor-kilo-container {
+  display: flex;
+  flex-direction: column;
+  width: 300;
+}
+
+#thor-old-kilo-input,
+#thor-new-kilo-input {
+  margin: 4px;
+  width: 150px;
+}
+
+#calculate-kilo-button {
+  width: 100px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-style: none;
+  border-radius: 10px;
+  color: var(--pink);
+  margin-top: 4px;
+}
+
+#display-kilo-difference {
+  color: yellowgreen
+}

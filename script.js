@@ -14,7 +14,10 @@ let surnameDisplaySpan = document.getElementById('surname-span')
 let ageDisplaySpan = document.getElementById('age-span')
 let genderDisplaySpan = document.getElementById('gender-span')
 let errorDisplaySpan = document.getElementById('error-span')
-
+let thorOldKilo = document.getElementById('thor-old-kilo-input')
+let thorNewKilo = document.getElementById('thor-new-kilo-input')
+let calculateKiloButton = document.getElementById('calculate-kilo-button')
+let displayKiloDifferenceSpan = document.getElementById('display-kilo-difference')
 
 //************
 //************
@@ -115,44 +118,29 @@ submitNameSurnameAgeGenderButton.addEventListener('click', submitNameSurnameAgeG
 
 //************
 //************
-
+// THOR KILO :)
 //************
 //************
 
+function calculatePercentage(){
 
-// let vorName = prompt("Bitte schrein Ihre Vorname");
-// let nachName = prompt("Bitte schrein Ihre Nachname");
-// let alter = parseInt(prompt("Bitte schreib Ihre Alt"));
-// let geschlecht = prompt("Bitte schreib Ihre geschelct als Mannlich(M) oder Weiblich(W)").toLowerCase();
+  if (!isNaN(thorOldKilo.value) && !isNaN(thorNewKilo.value)){
 
-// let errormessage = ""
+    let newKilo = thorNewKilo.value
+    let oldKilo = thorOldKilo.value
+
+    let result = Math.abs((newKilo-oldKilo)*100)/oldKilo
+
+    if (newKilo>oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% increased. `
+    else if (newKilo<oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% decreased. `
+    else displayKiloDifferenceSpan.innerHTML = "Same KG"
+
+  } else {
+    displayKiloDifferenceSpan.innerHTML = "Enter valid KG"
+  }
+}
+
+calculateKiloButton.addEventListener('click', calculatePercentage)
 
 
-
-// if (isNaN(vorName)){
-
-//   if(vorName.length<2 || vorName.length>35){
-//   errormessage +=" Falsche Vorname " 
-//   }
-
-//   if(nachName.length<2 || nachName.length>35){
-//     errormessage +=" Falsche Nachname " 
-//   } 
-
-//   if(alter<0 || alter>125){
-//     errormessage +=" Falsche Alter" 
-//   }
-//   if(geschlecht !="m"||geschlecht !="mannlich"|| geschlecht !="w"||geschlecht !="weiblich"){
-//     errormessage +="Falsche geschelcht"
-//   }
-
-// } else {
-//   alert("vorName string değil")
-// }
-// console.log("Ihre vorName = ",vorName );
-// console.log("Ihre Name = ",nachName );
-// console.log("Ihre Alter = ",alter );
-// console.log("Ihre Geschlecht = ",geschlecht );
-
-// alert(errormessage);
   
