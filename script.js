@@ -18,6 +18,12 @@ let thorOldKilo = document.getElementById('thor-old-kilo-input')
 let thorNewKilo = document.getElementById('thor-new-kilo-input')
 let calculateKiloButton = document.getElementById('calculate-kilo-button')
 let displayKiloDifferenceSpan = document.getElementById('display-kilo-difference')
+let cookieName = document.getElementById('cookie-name')
+let cookieValue = document.getElementById('cookie-value')
+let submitCookieButton = document.getElementById('submit-cookie-button')
+let clearCookieButton = document.getElementById('clear-cookies-button')
+
+
 
 //************
 //************
@@ -65,8 +71,6 @@ let personalData = {
 }
 
 let errorMessage = []
-
-//bug var bakacağım
 
 nameInput.oninput = () =>{
 
@@ -143,4 +147,21 @@ function calculatePercentage(){
 calculateKiloButton.addEventListener('click', calculatePercentage)
 
 
-  
+//************
+//************
+// ADD COOKIE
+//************
+//************ 
+
+function addCookie(){
+  if (isNaN(cookieName.value) && isNaN(cookieValue.value) && 0<cookieName.value.length<15 && 0<cookieValue.length<15)
+  document.cookie = `${cookieName.value}=${cookieValue.value}; path=/`
+}
+
+function clearCookies(){
+  const clearCookies = document.cookie.split(';').forEach(cookie => 
+  document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
+}
+
+submitCookieButton.addEventListener('click', addCookie)
+clearCookieButton.addEventListener('click', clearCookies)
