@@ -178,10 +178,6 @@ clearCookieButton.addEventListener('click', clearCookies)
 let mouseX, mouseY
 let windowH = window.innerHeight
 let windowW = window.innerWidth
-let emptyBoxVals = emptyBox.getBoundingClientRect()
-
-console.log(emptyBoxVals.x)
-console.log(emptyBoxVals.y)
 
 emptyBox.addEventListener('mousemove', handleMouseOver)
 emptyBox.addEventListener('mouseleave', handleMouseLeave)
