@@ -22,6 +22,8 @@ let cookieName = document.getElementById('cookie-name')
 let cookieValue = document.getElementById('cookie-value')
 let submitCookieButton = document.getElementById('submit-cookie-button')
 let clearCookieButton = document.getElementById('clear-cookies-button')
+let emptyBox = document.getElementById('empty-box')
+let displayCoordinates = document.getElementById('display-coordinates')
 
 
 
@@ -165,3 +167,39 @@ function clearCookies(){
 
 submitCookieButton.addEventListener('click', addCookie)
 clearCookieButton.addEventListener('click', clearCookies)
+
+
+//************
+//************
+// CURSOR COORDINATES
+//************
+//************ 
+
+let mouseX, mouseY
+let windowH = window.innerHeight
+let windowW = window.innerWidth
+let emptyBoxVals = emptyBox.getBoundingClientRect()
+
+console.log(emptyBoxVals.x)
+console.log(emptyBoxVals.y)
+
+emptyBox.addEventListener('mousemove', handleMouseOver)
+emptyBox.addEventListener('mouseleave', handleMouseLeave)
+
+// mouse'un her hareketinde koordinatları yazıyor (ekrana göre koordinatlar)
+function handleMouseOver(e){
+  mouseX = e.clientX
+  mouseY = e.clientY    
+
+  displayCoordinates.innerHTML = `(${mouseX},${mouseY})`
+  displayCoordinates.style.color = '#FB2576'
+  displayCoordinates.style.position = 'fixed'
+  displayCoordinates.style.top = (mouseY+10) + 'px'
+  displayCoordinates.style.left = (mouseX+20) + 'px'
+
+}
+
+// mouse div'in dışına çıktığında koordinatları siler
+function handleMouseLeave(e){
+  displayCoordinates.innerHTML = ''
+}

@@ -128,3 +128,14 @@ span {
   color: var(--pink);
   margin-top: 4px;
 }
+
+#cursor-coordinates-container {
+  width: 250px;
+  height: auto;
+}
+
+#empty-box {
+  width: 200px;
+  height: 150px;
+  background-color: yellowgreen;
+}
