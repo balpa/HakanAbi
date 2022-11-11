@@ -188,7 +188,7 @@ function handleMouseOver(e){
   mouseY = e.clientY    
 
   displayCoordinates.innerHTML = `(${mouseX},${mouseY})`
-  displayCoordinates.style.color = '#FB2576'
+  displayCoordinates.style.color = '#fff'
   displayCoordinates.style.position = 'fixed'
   displayCoordinates.style.top = (mouseY+10) + 'px'
   displayCoordinates.style.left = (mouseX+20) + 'px'
