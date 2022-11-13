@@ -8,7 +8,7 @@ let nameInput = document.getElementById('name-input')
 let surnameInput = document.getElementById('surname-input')
 let ageInput = document.getElementById('age-input')
 let genderInput = document.getElementById('gender-input')
-let submitNameSurnameAgeGenderButton =  document.getElementById('submit-name-surname-age-gender')
+let submitNameSurnameAgeGenderButton = document.getElementById('submit-name-surname-age-gender')
 let nameDisplaySpan = document.getElementById('name-span')
 let surnameDisplaySpan = document.getElementById('surname-span')
 let ageDisplaySpan = document.getElementById('age-span')
@@ -24,6 +24,7 @@ let submitCookieButton = document.getElementById('submit-cookie-button')
 let clearCookieButton = document.getElementById('clear-cookies-button')
 let emptyBox = document.getElementById('empty-box')
 let displayCoordinates = document.getElementById('display-coordinates')
+let biletCekButton = document.getElementById('bilet-cek')
 
 
 
@@ -34,15 +35,15 @@ let displayCoordinates = document.getElementById('display-coordinates')
 //************
 
 // input'ta her değişiklik olduğunda çalışır. (inputSpan'in değerini girdiğimiz değer yapıyor)
-userInput.oninput = () => { 
+userInput.oninput = () => {
 
-  inputSpan.innerHTML = userInput.value 
+  inputSpan.innerHTML = userInput.value
 
   // isNaN = Not a Number. isNaN doğru gelirse string, gelmezse integer dedik. Exception'lar vardır **çok sağlıklı değil burası** 
   // float için else if yazıp input içinde "." var mı diye baktık.
-  if (isNaN(userInput.value)){
+  if (isNaN(userInput.value)) {
     inputTypeSpan.innerHTML = 'string'
-  } else if (userInput.value.includes('.')){
+  } else if (userInput.value.includes('.')) {
     inputTypeSpan.innerHTML = 'float'
   } else {
     inputTypeSpan.innerHTML = 'integer'
@@ -74,42 +75,42 @@ let personalData = {
 
 let errorMessage = []
 
-nameInput.oninput = () =>{
+nameInput.oninput = () => {
 
-  if(nameInput.value != "" && nameInput.value.length < 35){
+  if (nameInput.value != "" && nameInput.value.length < 35) {
     personalData.name = nameInput.value
   }
   if (nameInput.value.length < 2 && nameInput.value.length > 35) errorMessage.push("name")
 }
-surnameInput.oninput = () =>{
+surnameInput.oninput = () => {
 
-  if(surnameInput.value != "" && surnameInput.value.length < 35){
+  if (surnameInput.value != "" && surnameInput.value.length < 35) {
     personalData.surname = surnameInput.value
   }
   if (surnameInput.value.length < 2 && surnameInput.value.length > 35) errorMessage.push("surname")
 }
-ageInput.oninput = () =>{
+ageInput.oninput = () => {
 
-  if(ageInput.value > 0 && ageInput.value < 125){
+  if (ageInput.value > 0 && ageInput.value < 125) {
     personalData.age = ageInput.value
   } else {
     errorMessage.push("age")
     personalData.age = 0
   }
 }
-genderInput.oninput = () =>{
+genderInput.oninput = () => {
 
   let gender = genderInput.value.toLowerCase()
 
-  if(gender != "m" && gender != 'w'){
+  if (gender != "m" && gender != 'w') {
     errorMessage.push("gender")
   } else {
     personalData.gender = gender
   }
-    
+
 }
 
-function submitNameSurnameAgeGender(){
+function submitNameSurnameAgeGender() {
   nameDisplaySpan.innerHTML = personalData.name
   surnameDisplaySpan.innerHTML = personalData.surname
   ageDisplaySpan.innerHTML = personalData.age
@@ -128,17 +129,17 @@ submitNameSurnameAgeGenderButton.addEventListener('click', submitNameSurnameAgeG
 //************
 //************
 
-function calculatePercentage(){
+function calculatePercentage() {
 
-  if (!isNaN(thorOldKilo.value) && !isNaN(thorNewKilo.value)){
+  if (!isNaN(thorOldKilo.value) && !isNaN(thorNewKilo.value)) {
 
     let newKilo = thorNewKilo.value
     let oldKilo = thorOldKilo.value
 
-    let result = Math.abs((newKilo-oldKilo)*100)/oldKilo
+    let result = Math.abs((newKilo - oldKilo) * 100) / oldKilo
 
-    if (newKilo>oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% increased. `
-    else if (newKilo<oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% decreased. `
+    if (newKilo > oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% increased. `
+    else if (newKilo < oldKilo) displayKiloDifferenceSpan.innerHTML = `KG ${result.toFixed(2)}% decreased. `
     else displayKiloDifferenceSpan.innerHTML = "Same KG"
 
   } else {
@@ -155,14 +156,14 @@ calculateKiloButton.addEventListener('click', calculatePercentage)
 //************
 //************ 
 
-function addCookie(){
-  if (isNaN(cookieName.value) && isNaN(cookieValue.value) && 0<cookieName.value.length<15 && 0<cookieValue.length<15)
-  document.cookie = `${cookieName.value}=${cookieValue.value}; path=/`
+function addCookie() {
+  if (isNaN(cookieName.value) && isNaN(cookieValue.value) && 0 < cookieName.value.length < 15 && 0 < cookieValue.length < 15)
+    document.cookie = `${cookieName.value}=${cookieValue.value}; path=/`
 }
 
-function clearCookies(){
-  const clearCookies = document.cookie.split(';').forEach(cookie => 
-  document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
+function clearCookies() {
+  const clearCookies = document.cookie.split(';').forEach(cookie =>
+    document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
 }
 
 submitCookieButton.addEventListener('click', addCookie)
@@ -183,19 +184,45 @@ emptyBox.addEventListener('mousemove', handleMouseOver)
 emptyBox.addEventListener('mouseleave', handleMouseLeave)
 
 // mouse'un her hareketinde koordinatları yazıyor (ekrana göre koordinatlar)
-function handleMouseOver(e){
+function handleMouseOver(e) {
   mouseX = e.clientX
-  mouseY = e.clientY    
+  mouseY = e.clientY
 
   displayCoordinates.innerHTML = `(${mouseX},${mouseY})`
   displayCoordinates.style.color = '#fff'
   displayCoordinates.style.position = 'fixed'
-  displayCoordinates.style.top = (mouseY+10) + 'px'
-  displayCoordinates.style.left = (mouseX+20) + 'px'
+  displayCoordinates.style.top = (mouseY + 10) + 'px'
+  displayCoordinates.style.left = (mouseX + 20) + 'px'
 
 }
 
 // mouse div'in dışına çıktığında koordinatları siler
-function handleMouseLeave(e){
+function handleMouseLeave(e) {
   displayCoordinates.innerHTML = ''
+}
+
+
+//************
+//************
+// LOTO
+//************
+//************ 
+
+biletCekButton.addEventListener('click', biletYarat)
+
+let altiliBilet = []
+
+function biletYarat() {
+
+  if (altiliBilet.length < 6) {
+    for (let i = 0; i < 6; i++) {
+      let num = Math.floor(Math.random() * 49)
+      altiliBilet.push(num)
+    }
+    // if (new Set(altiliBilet).length !== altiliBilet.length) {
+    //   altiliBilet.push(Math.floor(Math.random() * 49))
+    // }
+  }
+
+  console.log(altiliBilet)
 }
