@@ -25,7 +25,10 @@ let clearCookieButton = document.getElementById('clear-cookies-button')
 let emptyBox = document.getElementById('empty-box')
 let displayCoordinates = document.getElementById('display-coordinates')
 let biletCekButton = document.getElementById('bilet-cek')
-
+let numaraCekButton = document.getElementById('numara-cek')
+let biletSpan = document.getElementById('bilet-span')
+let numaralarDiv = document.getElementById('numaralar-div')
+let lotoSifirlaButton = document.getElementById('loto-sifirla')
 
 
 //************
@@ -209,11 +212,15 @@ function handleMouseLeave(e) {
 //************ 
 
 biletCekButton.addEventListener('click', biletYarat)
+numaraCekButton.addEventListener('click', numaraYarat)
+lotoSifirlaButton.addEventListener('click', lotoSifirla)
 
 let altiliBilet = []
+let numaralar = []
 
 function biletYarat() {
 
+  // aynı sayının gelmeme durumunu yapmadım bakıcam bir ara
   if (altiliBilet.length < 6) {
     for (let i = 0; i < 6; i++) {
       let num = Math.floor(Math.random() * 49)
@@ -224,5 +231,35 @@ function biletYarat() {
     // }
   }
 
-  console.log(altiliBilet)
+  let altiliBiletText = ""
+
+  altiliBilet.map((item, index) => {
+    if (index != altiliBilet.length - 1) altiliBiletText += `${item}-`
+    else altiliBiletText += `${item}`
+  })
+
+  biletSpan.innerHTML = altiliBiletText
+}
+
+function numaraYarat() {
+
+  let numara = Math.floor(Math.random() * 48 + 1) // 0 ile 48 arasında bulup 1 ekliyoruz 0 gelmesin diye 1-49 oluyor
+  numaralar.push(numara)
+
+  if (numaralar.length <= 6) {
+    let numaraSpan = document.createElement('span')
+    numaraSpan.style.fontSize = "25px"
+    numaralar.length == 6 ? numaraSpan.innerHTML = `${numara}` : numaraSpan.innerHTML = `${numara}-`
+    numaralarDiv.appendChild(numaraSpan)
+  }
+}
+
+function lotoSifirla() {
+
+  altiliBilet = []
+  numaralar = []
+  biletSpan.innerHTML = ""
+  while (numaralarDiv.firstChild) {
+    numaralarDiv.removeChild(numaralarDiv.firstChild);
+  }
 }

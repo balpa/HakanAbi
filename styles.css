@@ -123,8 +123,11 @@ span {
 }
 
 #submit-cookie-button,
-#clear-cookies-button {
-  width: 100px;
+#clear-cookies-button,
+#bilet-cek,
+#numara-cek,
+#loto-sifirla {
+  width: 150px;
   height: 25px;
   background: rgba(255, 255, 255, 0.15);
   border-style: none;
@@ -142,4 +145,13 @@ span {
   width: 200px;
   height: 150px;
   background-color: yellowgreen;
+  margin-bottom: 25px;
+}
+
+#bilet-numaralar-container {
+  color: var(--pink);
+}
+
+#bilet-span {
+  font-size: 25px;
 }
