@@ -29,6 +29,10 @@ let numaraCekButton = document.getElementById('numara-cek')
 let biletSpan = document.getElementById('bilet-span')
 let numaralarDiv = document.getElementById('numaralar-div')
 let lotoSifirlaButton = document.getElementById('loto-sifirla')
+let fetchButton = document.getElementById('fetch-button')
+let displayFetchedData = document.getElementById('display-fetched-data')
+let fetchDataContainer = document.getElementById('fetch-data-container')
+let displayDataContainer = document.getElementById('display-data-container')
 
 
 //************
@@ -220,7 +224,7 @@ let numaralar = []
 
 function biletYarat() {
 
-  // aynı sayının gelmeme durumunu yapmadım bakıcam bir ara
+  // aynı sayının gelmeme durumunu yapmadım bakıcam bir ara / numaraları sıralamak lazım
   if (altiliBilet.length < 6) {
     for (let i = 0; i < 6; i++) {
       let num = Math.floor(Math.random() * 49)
@@ -262,4 +266,32 @@ function lotoSifirla() {
   while (numaralarDiv.firstChild) {
     numaralarDiv.removeChild(numaralarDiv.firstChild);
   }
+}
+
+//************
+//************
+// FETCHING DATA
+//************
+//************ 
+
+fetchButton.addEventListener('click', fetchData)
+
+let data
+
+async function fetchData() {
+  const URL = "https://random-data-api.com/api/v2/beers"
+
+  while (displayDataContainer.firstChild) {
+    displayDataContainer.removeChild(displayDataContainer.firstChild);
+  }
+
+  await fetch(URL)
+    .then(response => response.json())
+    .then(result => data = result)
+
+  Object.entries(data).forEach((item) => {
+    let createSpan = document.createElement('span')
+    createSpan.innerHTML = `${item[0].toUpperCase()}: ${item[1]}`
+    displayDataContainer.appendChild(createSpan)
+  })
 }
