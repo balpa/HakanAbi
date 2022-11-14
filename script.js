@@ -33,6 +33,7 @@ let fetchButton = document.getElementById('fetch-button')
 let displayFetchedData = document.getElementById('display-fetched-data')
 let fetchDataContainer = document.getElementById('fetch-data-container')
 let displayDataContainer = document.getElementById('display-data-container')
+let clearDataButton = document.getElementById('clear-data-button')
 
 
 //************
@@ -275,6 +276,7 @@ function lotoSifirla() {
 //************ 
 
 fetchButton.addEventListener('click', fetchData)
+clearDataButton.addEventListener('click', clearFetchedData)
 
 let data
 
@@ -294,4 +296,11 @@ async function fetchData() {
     createSpan.innerHTML = `${item[0].toUpperCase()}: ${item[1]}`
     displayDataContainer.appendChild(createSpan)
   })
+}
+
+function clearFetchedData() {
+  data = null
+  while (displayDataContainer.firstChild) {
+    displayDataContainer.removeChild(displayDataContainer.firstChild);
+  }
 }

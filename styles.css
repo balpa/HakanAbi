@@ -27,14 +27,6 @@ span {
   color: var(--pink)
 }
 
-#clear-button {
-  width: 100px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.15);
-  border-style: none;
-  border-radius: 10px;
-  color: var(--pink);
-}
 
 #input {
   border-style: none;
@@ -74,16 +66,6 @@ span {
   color: var(--pink);
 }
 
-#submit-name-surname-age-gender {
-  width: 100px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.15);
-  border-style: none;
-  border-radius: 10px;
-  color: var(--pink);
-  margin-top: 4px;
-}
-
 #thor-kilo-container {
   display: flex;
   flex-direction: column;
@@ -94,16 +76,6 @@ span {
 #thor-new-kilo-input {
   margin: 4px;
   width: 150px;
-}
-
-#calculate-kilo-button {
-  width: 100px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.15);
-  border-style: none;
-  border-radius: 10px;
-  color: var(--pink);
-  margin-top: 4px;
 }
 
 #display-kilo-difference {
@@ -127,7 +99,11 @@ span {
 #bilet-cek,
 #numara-cek,
 #loto-sifirla,
-#fetch-button {
+#fetch-button,
+#clear-data-button,
+#clear-button,
+#submit-name-surname-age-gender,
+#calculate-kilo-button {
   width: 150px;
   height: 25px;
   background: rgba(255, 255, 255, 0.15);
@@ -135,6 +111,22 @@ span {
   border-radius: 10px;
   color: var(--pink);
   margin-top: 4px;
+  transition: 1s;
+}
+
+#submit-cookie-button:hover,
+#clear-cookies-button:hover,
+#bilet-cek:hover,
+#numara-cek:hover,
+#loto-sifirla:hover,
+#fetch-button:hover,
+#clear-data-button:hover,
+#clear-button:hover,
+#submit-name-surname-age-gender:hover,
+#calculate-kilo-button:hover {
+  background: rgb(255, 255, 255, 0.3);
+  color: yellowgreen;
+  cursor: pointer;
 }
 
 #cursor-coordinates-container {
@@ -160,7 +152,7 @@ span {
 #fetch-data-container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 350px;
 }
 
 #display-data-container {
