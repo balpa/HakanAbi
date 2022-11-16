@@ -39,6 +39,7 @@ let clearDataButton = document.getElementById('clear-data-button')
 let albumNextButton = document.getElementById('next-album-button')
 let albumPreviousButton = document.getElementById('previous-album-button')
 let albumContents = document.getElementById('album-contents')
+let albumNumber = document.getElementById('album-number')
 
 
 
@@ -331,6 +332,11 @@ albumContents.innerHTML = `
 <h4>${albumData.catalog[0].company}</h4><br>
 <h4>$${albumData.catalog[0].price}</h4><br>
 `
+albumNumber.innerHTML = `<h5>${currentAlbum + 1}/${albumData.catalog.length}</h5>`
+
+function checkAndWriteAlbumNumber() {
+  albumNumber.innerHTML = `<h5>${currentAlbum + 1}/${albumData.catalog.length}</h5>`
+}
 
 
 function nextAlbum() {
@@ -345,8 +351,9 @@ function nextAlbum() {
   <h4>${albumData.catalog[currentAlbum].company}</h4><br>
   <h4>$${albumData.catalog[currentAlbum].price}</h4><br>
   `
-
+  checkAndWriteAlbumNumber()
 }
+
 function previousAlbum() {
   currentAlbum--
 
@@ -359,4 +366,5 @@ function previousAlbum() {
   <h4>${albumData.catalog[currentAlbum].company}</h4><br>
   <h4>$${albumData.catalog[currentAlbum].price}</h4><br>
   `
+  checkAndWriteAlbumNumber()
 }
