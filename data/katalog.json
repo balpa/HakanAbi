@@ -1,0 +1,186 @@
+{
+  "catalog": [
+    {
+      "title": "Empire Burlesque",
+      "artist": "Bob Dylan",
+      "company": "Columbia",
+      "price": "10.90",
+      "year": "1985"
+    },
+    {
+      "title": "Hide your heart",
+      "artist": "Bonnie Tyler",
+      "company": "CBS Records",
+      "price": "9.90",
+      "year": "1988"
+    },
+    {
+      "title": "Greatest Hits",
+      "artist": "Dolly Parton",
+      "company": "RCA",
+      "price": "9.90",
+      "year": "1982"
+    },
+    {
+      "title": "Still got the blues",
+      "artist": "Gary Moore",
+      "company": "Virgin records",
+      "price": "10.20",
+      "year": "1990"
+    },
+    {
+      "title": "Eros",
+      "artist": "Eros Ramazzotti",
+      "company": "BMG",
+      "price": "9.90",
+      "year": "1997"
+    },
+    {
+      "title": "One night only",
+      "artist": "Bee Gees",
+      "company": "Polydor",
+      "price": "10.90",
+      "year": "1998"
+    },
+    {
+      "title": "Sylvias Mother",
+      "artist": "Dr.Hook",
+      "company": "CBS",
+      "price": "8.10",
+      "year": "1973"
+    },
+    {
+      "title": "Maggie May",
+      "artist": "Rod Stewart",
+      "company": "Pickwick",
+      "price": "8.50",
+      "year": "1990"
+    },
+    {
+      "title": "Romanza",
+      "artist": "Andrea Bocelli",
+      "company": "Polydor",
+      "price": "10.80",
+      "year": "1996"
+    },
+    {
+      "title": "When a man loves a woman",
+      "artist": "Percy Sledge",
+      "company": "Atlantic",
+      "price": "8.70",
+      "year": "1987"
+    },
+    {
+      "title": "Black angel",
+      "artist": "Savage Rose",
+      "company": "Mega",
+      "price": "10.90",
+      "year": "1995"
+    },
+    {
+      "title": "1999 Grammy Nominees",
+      "artist": "Many",
+      "company": "Grammy",
+      "price": "10.20",
+      "year": "1999"
+    },
+    {
+      "title": "For the good times",
+      "artist": "Kenny Rogers",
+      "company": "Mucik Master",
+      "price": "8.70",
+      "year": "1995"
+    },
+    {
+      "title": "Big Willie style",
+      "artist": "Will Smith",
+      "company": "Columbia",
+      "price": "9.90",
+      "year": "1997"
+    },
+    {
+      "title": "Tupelo Honey",
+      "artist": "Van Morrison",
+      "company": "Polydor",
+      "price": "8.20",
+      "year": "1971"
+    },
+    {
+      "title": "Soulsville",
+      "artist": "Jorn Hoel",
+      "company": "WEA",
+      "price": "7.90",
+      "year": "1996"
+    },
+    {
+      "title": "The very best of",
+      "artist": "Cat Stevens",
+      "company": "Island",
+      "price": "8.90",
+      "year": "1990"
+    },
+    {
+      "title": "Stop",
+      "artist": "Sam Brown",
+      "company": "A and M",
+      "price": "8.90",
+      "year": "1988"
+    },
+    {
+      "title": "Bridge of Spies",
+      "artist": "T'Pau",
+      "company": "Siren",
+      "price": "7.90",
+      "year": "1987"
+    },
+    {
+      "title": "Private Dancer",
+      "artist": "Tina Turner",
+      "company": "Capitol",
+      "price": "8.90",
+      "year": "1983"
+    },
+    {
+      "title": "Midt om natten",
+      "artist": "Kim Larsen",
+      "company": "Medley",
+      "price": "7.80",
+      "year": "1983"
+    },
+    {
+      "title": "Pavarotti Gala Concert",
+      "artist": "Luciano Pavarotti",
+      "company": "DECCA",
+      "price": "9.90",
+      "year": "1991"
+    },
+    {
+      "title": "The dock of the bay",
+      "artist": "Otis Redding",
+      "company": "Stax Records",
+      "price": "7.90",
+      "year": "1968"
+    },
+    {
+      "title": "Picture book",
+      "artist": "Simply Red",
+      "company": "Elektra",
+      "price": "7.20",
+      "year": "1985"
+    },
+    {
+      "title": "Red",
+      "artist": "The Communards",
+      "company": "London",
+      "price": "7.80",
+      "year": "1987"
+    },
+    {
+      "title": "Unchain my heart",
+      "artist": "Joe Cocker",
+      "company": "EMI",
+      "price": "8.20",
+      "year": "1987"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import albumData from './data/katalog.json' assert {type: 'json'}
+
 
 // üzerinde işlem yapacağımız elementleri seçtiğimiz yer. kütüphane için import gibi düşünebilirsin.
 let userInput = document.getElementById("input")
@@ -34,6 +36,11 @@ let displayFetchedData = document.getElementById('display-fetched-data')
 let fetchDataContainer = document.getElementById('fetch-data-container')
 let displayDataContainer = document.getElementById('display-data-container')
 let clearDataButton = document.getElementById('clear-data-button')
+let albumNextButton = document.getElementById('next-album-button')
+let albumPreviousButton = document.getElementById('previous-album-button')
+let albumContents = document.getElementById('album-contents')
+
+
 
 
 //************
@@ -303,4 +310,53 @@ function clearFetchedData() {
   while (displayDataContainer.firstChild) {
     displayDataContainer.removeChild(displayDataContainer.firstChild);
   }
+}
+
+
+//************
+//************
+// ALBUM CATALOG
+//************
+//************
+
+albumNextButton.addEventListener('click', nextAlbum)
+albumPreviousButton.addEventListener('click', previousAlbum)
+
+let currentAlbum = 0 // sayfa açılınca sıfırıncı albümü gösterdik
+
+albumContents.innerHTML = `
+<h1>${albumData.catalog[0].artist}</h1><br>
+<h3>${albumData.catalog[0].title}</h3><br>
+<h4>${albumData.catalog[0].year}</h4><br>
+<h4>${albumData.catalog[0].company}</h4><br>
+<h4>$${albumData.catalog[0].price}</h4><br>
+`
+
+
+function nextAlbum() {
+  currentAlbum++
+
+  if (currentAlbum == albumData.catalog.length) currentAlbum = 0
+
+  albumContents.innerHTML = `
+  <h1>${albumData.catalog[currentAlbum].artist}</h1><br>
+  <h3>${albumData.catalog[currentAlbum].title}</h3><br>
+  <h4>${albumData.catalog[currentAlbum].year}</h4><br>
+  <h4>${albumData.catalog[currentAlbum].company}</h4><br>
+  <h4>$${albumData.catalog[currentAlbum].price}</h4><br>
+  `
+
+}
+function previousAlbum() {
+  currentAlbum--
+
+  if (currentAlbum < 0) currentAlbum = albumData.catalog.length - 1
+
+  albumContents.innerHTML = `
+  <h1>${albumData.catalog[currentAlbum].artist}</h1><br>
+  <h3>${albumData.catalog[currentAlbum].title}</h3><br>
+  <h4>${albumData.catalog[currentAlbum].year}</h4><br>
+  <h4>${albumData.catalog[currentAlbum].company}</h4><br>
+  <h4>$${albumData.catalog[currentAlbum].price}</h4><br>
+  `
 }
