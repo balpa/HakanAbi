@@ -325,6 +325,7 @@ albumPreviousButton.addEventListener('click', previousAlbum)
 
 let currentAlbum = 0 // sayfa açılınca sıfırıncı albümü gösterdik
 
+// her seferinde aynı şeyi yazmamak için innerHTML'in içeriğini bir kere burada oluşturdum
 function createAlbumContentHTML() {
   return `
   <h1>${albumData.catalog[currentAlbum].artist}</h1><br>
