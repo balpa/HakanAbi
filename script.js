@@ -370,33 +370,91 @@ let GRID_HEIGHT = 400
 let ROWS = 20
 let COLS = 20
 
+let divsInGrid
+let starterDiv
+let starterDivIndex
 
-function createSingleGrid() {
+function createSingleSquare() {
 
   let div = document.createElement('div')
   div.style.width = `${GRID_WIDTH / ROWS}px`
   div.style.height = `${GRID_HEIGHT / COLS}px`
   div.style.boxShadow = `inset 0 0 1px #fff`
 
-  div.addEventListener('click', () => {
+  // div.addEventListener('mouseenter', () => {
 
-    let currBGColor = window.getComputedStyle(div).getPropertyValue('background-color')
+  //   let currBGColor = window.getComputedStyle(div).getPropertyValue('background-color')
 
-    if (currBGColor == 'rgba(0, 0, 0, 0)') {
-      div.style.backgroundColor = 'rgb(255, 255, 255)'
-    }
-    else if (currBGColor == 'rgb(255, 255, 255)') {
-      div.style.backgroundColor = 'rgba(0, 0, 0, 0)'
-    }
-  })
+  //   if (currBGColor == 'rgba(0, 0, 0, 0)') {
+  //     div.style.backgroundColor = 'rgb(255, 255, 255)'
+  //     div.style.boxShadow = `inset 0 0 1px #000`
+  //   }
+  //   else if (currBGColor == 'rgb(255, 255, 255)') {
+  //     div.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+  //     div.style.boxShadow = `inset 0 0 1px #fff`
+  //   }
+  // })
 
   gridContainer.appendChild(div)
 }
-
 function createGrid() {
   for (let x = 0; x < ROWS * COLS; x++) {
-    createSingleGrid()
+    createSingleSquare()
   }
 }
 
-createGrid()
+let currentIndex
+let currentDiv
+
+function drawRandomStarterSquare() {
+  divsInGrid = document.querySelectorAll('#grid-container > div')
+  starterDiv = divsInGrid[Math.floor(Math.random() * divsInGrid.length)]
+  starterDivIndex = Array.prototype.indexOf.call(divsInGrid, starterDiv)
+  currentIndex = starterDivIndex
+  currentDiv = starterDiv
+
+  starterDiv.style.backgroundColor = 'rgb(255, 0, 0)'
+}
+function render() {
+  createGrid()
+  drawRandomStarterSquare()
+}
+
+render()
+
+window.addEventListener('keydown', (event) => {
+  event.preventDefault()
+
+  if (event.key === 'ArrowRight') {
+    if (divsInGrid[currentIndex + 1] != undefined) {
+      divsInGrid[currentIndex].style.backgroundColor = 'rgb(0,0,0)'
+      divsInGrid[currentIndex + 1].style.backgroundColor = 'rgb(255,0,0)'
+      currentIndex += 1
+    }
+  }
+  else if (event.key === 'ArrowLeft') {
+    if (divsInGrid[currentIndex - 1] != undefined) {
+      divsInGrid[currentIndex].style.backgroundColor = 'rgb(0,0,0)'
+      divsInGrid[currentIndex - 1].style.backgroundColor = 'rgb(255,0,0)'
+      currentIndex -= 1
+    }
+  }
+  else if (event.key === 'ArrowUp') {
+    if (divsInGrid[currentIndex - 20] != undefined) {
+      divsInGrid[currentIndex].style.backgroundColor = 'rgb(0,0,0)'
+      divsInGrid[currentIndex - 20].style.backgroundColor = 'rgb(255,0,0)'
+      currentIndex -= 20
+    }
+  }
+  else if (event.key === 'ArrowDown') {
+    if (divsInGrid[currentIndex + 20] != undefined) {
+      divsInGrid[currentIndex].style.backgroundColor = 'rgb(0,0,0)'
+      divsInGrid[currentIndex + 20].style.backgroundColor = 'rgb(255,0,0)'
+      currentIndex += 20
+    }
+  }
+
+  console.log('Current index: ', currentIndex)
+})
+console.log('Starter div index: ', starterDivIndex)
+
