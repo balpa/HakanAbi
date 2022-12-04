@@ -178,3 +178,10 @@ span {
   background-color: rgba(255, 255, 255, 0.1);
   width: 300px;
 }
+
+#grid-container {
+  width: 400px;
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}

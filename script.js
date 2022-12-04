@@ -40,6 +40,7 @@ let albumNextButton = document.getElementById('next-album-button')
 let albumPreviousButton = document.getElementById('previous-album-button')
 let albumContents = document.getElementById('album-contents')
 let albumNumber = document.getElementById('album-number')
+let gridContainer = document.getElementById('grid-container')
 
 
 
@@ -165,7 +166,6 @@ function calculatePercentage() {
 
 calculateKiloButton.addEventListener('click', calculatePercentage)
 
-
 //************
 //************
 // ADD COOKIE
@@ -184,7 +184,6 @@ function clearCookies() {
 
 submitCookieButton.addEventListener('click', addCookie)
 clearCookieButton.addEventListener('click', clearCookies)
-
 
 //************
 //************
@@ -288,12 +287,16 @@ clearDataButton.addEventListener('click', clearFetchedData)
 
 let data
 
-async function fetchData() {
-  const URL = "https://random-data-api.com/api/v2/beers"
-
+function clearSpan() {
   while (displayDataContainer.firstChild) {
     displayDataContainer.removeChild(displayDataContainer.firstChild);
   }
+}
+
+async function fetchData() {
+  const URL = "https://random-data-api.com/api/v2/beers"
+
+  clearSpan()
 
   await fetch(URL)
     .then(response => response.json())
@@ -308,11 +311,8 @@ async function fetchData() {
 
 function clearFetchedData() {
   data = null
-  while (displayDataContainer.firstChild) {
-    displayDataContainer.removeChild(displayDataContainer.firstChild);
-  }
+  clearSpan()
 }
-
 
 //************
 //************
@@ -356,3 +356,47 @@ function previousAlbum() {
   albumContents.innerHTML = createAlbumContentHTML()
   checkAndWriteAlbumNumber()
 }
+
+
+//************
+//************
+// GRID
+//************
+//************
+
+let GRID_WIDTH = 400
+let GRID_HEIGHT = 400
+
+let ROWS = 20
+let COLS = 20
+
+
+function createSingleGrid() {
+
+  let div = document.createElement('div')
+  div.style.width = `${GRID_WIDTH / ROWS}px`
+  div.style.height = `${GRID_HEIGHT / COLS}px`
+  div.style.boxShadow = `inset 0 0 1px #fff`
+
+  div.addEventListener('click', () => {
+
+    let currBGColor = window.getComputedStyle(div).getPropertyValue('background-color')
+
+    if (currBGColor == 'rgba(0, 0, 0, 0)') {
+      div.style.backgroundColor = 'rgb(255, 255, 255)'
+    }
+    else if (currBGColor == 'rgb(255, 255, 255)') {
+      div.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+    }
+  })
+
+  gridContainer.appendChild(div)
+}
+
+function createGrid() {
+  for (let x = 0; x < ROWS * COLS; x++) {
+    createSingleGrid()
+  }
+}
+
+createGrid()
