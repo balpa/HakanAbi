@@ -1,4 +1,4 @@
-import albumData from './data/katalog.json' assert {type: 'json'}
+import albumData from '../data/katalog.json' assert {type: 'json'}
 
 
 // üzerinde işlem yapacağımız elementleri seçtiğimiz yer. kütüphane için import gibi düşünebilirsin.
